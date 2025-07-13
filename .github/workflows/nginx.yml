@@ -17,5 +17,5 @@ jobs:
       - uses: actions/checkout@v4.2.2
      # - run : docker build -t php_image .
      # - run: docker run --rm --name test php_image 
-      - run : curl http://localhost  
+      - run : php index.php
       
