@@ -5,7 +5,7 @@ jobs:
   Job1:
     runs-on: ubuntu-latest
     container:
-      image: nginx
+      image: php
       ports:
        - 80:8000
       
@@ -16,14 +16,6 @@ jobs:
           --health-retries 5
        
     steps:
-      - name: check out the code 
-        uses: actions/checkout@v4.2.2
-      - name: list the current directory
-        run: ls -l /usr/share/nginx/html
-      -  run: cp index.php /usr/share/nginx/html
-      - name: list the current directory2
-        run: ls -l /usr/share/nginx/html
-      - name: test the resulte
-        run:  service nginx start #curl  http://localhost
-      - run: service nginx status
+      
       - run : curl  http://localhost
+      - run: ls -l
