@@ -3,10 +3,19 @@ on:
   workflow_dispatch
 jobs:
   Job1:
-    runs-on: ubuntu-latest      
+    runs-on: ubuntu-latest
+    container:
+      image: php:8.5.0alpha1-zts-bullseye
+      ports:
+        - 80:8000
+      options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
       - uses: actions/checkout@v4.2.2
-      - run : docker build -t php_image .
-      - run: docker run --rm --name test php_image 
-    
+     # - run : docker build -t php_image .
+     # - run: docker run --rm --name test php_image 
+      - run : curl http://localhost  
       
