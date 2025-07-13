@@ -1,0 +1,20 @@
+name: this is first CI
+on:
+  workflow_dispatch:
+    inputs:
+      Name:
+        description: "Print the name you choose "
+        required: true
+        type: choice
+        options:
+          - Ahmad
+          - Ali
+          - Mousa
+        
+jobs:
+  First_Job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print the name you choice
+        run: echo "Hi Mr ${{inputs.Name}}"
+  
