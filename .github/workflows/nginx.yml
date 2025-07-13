@@ -18,4 +18,7 @@ jobs:
      # - run : docker build -t php_image .
      # - run: docker run --rm --name test php_image 
       - run : php index.php
-      
+      - run: echo "YESSSSSSSSSSSSSSS"
+        if: ${{ success() }}
+       
+       
