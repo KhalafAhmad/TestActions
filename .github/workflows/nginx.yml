@@ -19,4 +19,6 @@ jobs:
       - name: check out the code 
         uses: actions/checkout@v4.2.2
       - name: list the current directory
-        run: ls -a 
+        run: cp index.php /usr/share/nginx/html
+      - name: test the resulte
+        run: curl  http://localhost
