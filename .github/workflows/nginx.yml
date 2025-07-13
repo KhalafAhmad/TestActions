@@ -1,0 +1,19 @@
+name: test container on github ctions 
+on:
+  workflow_dispatch
+jobs:
+  Job1:
+    runs-on: ubuntu-latest
+    container:
+      image: nginx
+      ports:
+       - 80:8000
+      
+      options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+       
+    steps:
+      - run: echo "hellow from container "
