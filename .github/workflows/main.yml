@@ -17,4 +17,8 @@ jobs:
     steps:
       - name: print the name you choice
         run: echo "Hi Mr ${{inputs.Name}}"
+      - run: echo "Your_Age=30" >> GITHYB_OUTPUT
+        id: F
+      - run: echo "your age is ${{steps.F.outputs.Your_Age}}"
+      
   
