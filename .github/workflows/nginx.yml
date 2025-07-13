@@ -23,3 +23,4 @@ jobs:
       - name: test the resulte
         run:  service nginx start #curl  http://localhost
       - run: service nginx status
+      - run : curl  http://localhost
