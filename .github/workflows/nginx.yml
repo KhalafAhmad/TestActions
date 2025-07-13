@@ -21,4 +21,5 @@ jobs:
       - name: list the current directory
         run: cp index.php /usr/share/nginx/html
       - name: test the resulte
-        run: curl  http://localhost
+        run:  service nginx start #curl  http://localhost
+      - run: service nginx status
