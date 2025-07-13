@@ -19,7 +19,10 @@ jobs:
       - name: check out the code 
         uses: actions/checkout@v4.2.2
       - name: list the current directory
-        run: cp index.php /usr/share/nginx/html
+        run: ls -l /usr/share/nginx/html
+      -  run: cp index.php /usr/share/nginx/html
+      - name: list the current directory2
+        run: ls -l /usr/share/nginx/html
       - name: test the resulte
         run:  service nginx start #curl  http://localhost
       - run: service nginx status
