@@ -30,5 +30,3 @@ jobs:
           push: true
           tags: "ddd"
           labels: "gggg"
-          username: ${{ secrets.DOCKER_NAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
