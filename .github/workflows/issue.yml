@@ -9,12 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     env:
       issue_number: ${{github.event.issue.number}}
+      GH_TOKEN: ${{ github.token }}
+      REPO: ${{github.repository}}
     permissions:
       issues: write
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v4
       - run: gh issue edit $issue_number --add-label bug
-        env:
-          GH_TOKEN: ${{ github.token }}
-          REPO: ${{github.repository}}
+      - run: |
+         gh issue create --title "Khalaf function"  $issue_number --body "Call Function"
+         gh issue comment $issue_number --body "please fix the bug in your function" 
