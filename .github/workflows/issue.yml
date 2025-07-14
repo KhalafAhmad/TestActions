@@ -3,13 +3,13 @@ on:
   issues:
     types:
       - opened
+      - reopened 
 jobs:
   FirstJob:
     runs-on: ubuntu-latest
     env:
       issue_number: github.event.issue.id
-      GH_TOKEN: ${{ github.token }}
     steps:
-      - run: gh issue edit $issue_number --add-label bug
+      - run: gh issue edit ${{issue_number}} --add-label bug
         env:
           GH_TOKEN: ${{ github.token }}
