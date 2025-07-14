@@ -8,8 +8,8 @@ jobs:
   FirstJob:
     runs-on: ubuntu-latest
     env:
-      issue_number: github.event.issue.id
+      issue_number: github.event.issue.number
     steps:
-      - run: gh issue edit ${{issue_number}} --add-label bug
+      - run: gh issue edit $issue_number --add-label bug
         env:
           GH_TOKEN: ${{ github.token }}
