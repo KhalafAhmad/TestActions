@@ -2,7 +2,7 @@ name: workflow for issue
 on:
   issues:
     types:
-        opened:
+      - opened
 jobs:
   FirstJob:
     runs-on: ubuntu-latest
