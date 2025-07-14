@@ -18,5 +18,5 @@ jobs:
         uses: actions/checkout@v4
       - run: gh issue edit $issue_number --add-label bug
       - run: |
-         gh issue create --title "Khalaf function"  $issue_number --body "Call Function"
+         gh issue create --title "Khalaf function" --body "Call Function"
          gh issue comment $issue_number --body "please fix the bug in your function" 
