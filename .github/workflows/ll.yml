@@ -28,5 +28,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: "ddd"
+          tags: "khalafahmad/v4:8"
           labels: "gggg"
