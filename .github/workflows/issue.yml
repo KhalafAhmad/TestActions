@@ -13,3 +13,4 @@ jobs:
       - run: gh issue edit $issue_number --add-label bug
         env:
           GH_TOKEN: ${{ github.token }}
+          REPO: ${{github.repository}}
