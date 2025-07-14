@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       issue_number: ${{github.event.issue.number}}
+    permissions: write 
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v4
