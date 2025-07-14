@@ -1,0 +1,14 @@
+name: push image to docker hub account 
+on:
+  workflow_dispatch
+jobs:
+  push_docker_image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@4
+      - run: |
+        docker build -t git_hub_image .
+        docker tag git_hub_image ${{DOCKER_NAME}}/test_repo:2.1
+        docker login -u ${{DOCKER_NAME}} -p ${{DOCKER_PASSWORD}}
+        docker push ${{DOCKER_NAME}}/test_repo:2.1
+  
