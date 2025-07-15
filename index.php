@@ -1,12 +1,12 @@
 <?php
 // 1. Database connection info
-$servername = process.env.ip;
+//$servername = process.env.ip;
 $username = "root";
 $password = "khalaf"; // Set your own password
 $database = "test_db";
 
 // 2. Create connection
-$conn = new mysqli($servername, $username, $password, $database);
+$conn = new mysqli('mysql', $username, $password, $database);
 
 // 3. Check connection
 if ($conn->connect_error) {
