@@ -1,6 +1,6 @@
 <?php
 // 1. Database connection info
-$servername = "127.0.0.1";
+$servername = "mysql";
 $username = "root";
 $password = "khalaf"; // Set your own password
 $database = "test_db";
