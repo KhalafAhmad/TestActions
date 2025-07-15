@@ -1,0 +1,14 @@
+name: called workflow form the caller to print any name 
+on:
+ workflow_call:
+  inputs:
+    the_name:
+      type: string
+      required: true
+jobs:
+  Job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: take input name and print it 
+        run: echo "Hi Mr ${{inputs.the_name}}"
+    
