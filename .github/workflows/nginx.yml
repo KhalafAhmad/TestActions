@@ -35,13 +35,8 @@ jobs:
         run : sleep 5
       -  name: run php code 
          run: php index.php
-         env:
-          ip: mysql
       - name: test database
         run: php test.php
-        env:
-          ip: mysql
-
       - name: check resulte
         if: ${{success()}}
         run: echo "All test done "
