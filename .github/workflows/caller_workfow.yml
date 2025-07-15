@@ -3,8 +3,6 @@ on:
   workflow_dispatch
 jobs:
   Job1:
-    runs-on: ubuntu-latest
-    steps:
-     - uses: KhalafAhmad/TestActions/.github/workflows/called_workflow.yml@main
-       with:
-         the_name: "Ahmad 30 years "
+    uses: KhalafAhmad/TestActions/.github/workflows/called_workflow.yml@main
+    with:
+      the_name: "Ahmad 30 years "
