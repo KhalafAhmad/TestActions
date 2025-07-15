@@ -28,6 +28,8 @@ jobs:
         uses: actions/checkout@v4.2.2
       - name: install dependencies of php 
         run: docker-php-ext-install mysqli pdo_mysql
+      - name : waiting mysql
+        run : sleep 5
       -  name: run php code 
          run: php index.php
       - name: test database
