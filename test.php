@@ -1,6 +1,6 @@
 <?php
 // 1. Database connection info
-$servername = "mysql";
+$servername = process.env.ip;
 $username = "root";
 $password = ""; // Set your own password
 $database = "test_db";
