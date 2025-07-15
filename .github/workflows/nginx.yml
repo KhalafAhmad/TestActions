@@ -8,12 +8,6 @@ jobs:
       image: php:8.5.0alpha1-zts-bullseye
       ports:
         - 80:8000
-      options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-   
     services:
       # Label used to access the service container
       mysql:
@@ -23,6 +17,11 @@ jobs:
           MYSQL_ROOT_PASSWORD: "khalaf"
           MYSQL_USER: root
           MYSQL_DATABASE: test_db
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
       - name: checkout the code.
         uses: actions/checkout@v4.2.2
