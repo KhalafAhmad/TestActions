@@ -4,10 +4,7 @@ on:
 jobs:
   Job1:
     runs-on: ubuntu-latest
-    container:
-      image: php:8.5.0alpha1-zts-bullseye
-      ports:
-        - 80:8000
+    container: php:8.5.0alpha1-zts-bullseye
     services:
       # Label used to access the service container
       mysql:
