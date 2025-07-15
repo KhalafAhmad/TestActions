@@ -1,47 +1,40 @@
 <?php
-$host = 'localhost';
-$db   = 'test_db';
-$user = 'root';
-$pass = 'password'; // adjust if needed
-$charset = 'utf8mb4';
+// 1. Database connection info
+$servername = "localhost";
+$username = "root";
+$password = ""; // Set your own password
+$database = "test_db";
 
-// 1. Set up DSN (Data Source Name)
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+// 2. Create connection
+$conn = new mysqli($servername, $username, $password, $database);
 
-// 2. Set up PDO options
-$options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-];
-
-// 3. Connect to the database
-try {
-    $pdo = new PDO($dsn, $user, $pass, $options);
-} catch (\PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
+// 3. Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 
-// 4. Create a table
-$pdo->exec("CREATE TABLE IF NOT EXISTS users (
+// 4. Create table if not exists
+$conn->query("CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100),
-    email VARCHAR(100)
+    name VARCHAR(100) NOT NULL
 )");
 
-// 5. Insert data
-$pdo->prepare("INSERT INTO users (name, email) VALUES (?, ?)")
-    ->execute(['Alice', 'alice@example.com']);
-$pdo->prepare("INSERT INTO users (name, email) VALUES (?, ?)")
-    ->execute(['Bob', 'bob@example.com']);
+// 5. Simulated user input (you could use $_POST['name'] in real use)
+$user_input = "Alice";
 
-// 6. Fetch and print data
-$stmt = $pdo->query("SELECT * FROM users");
-$users = $stmt->fetchAll();
+// 6. Insert input into the table
+$stmt = $conn->prepare("INSERT INTO users (name) VALUES (?)");
+$stmt->bind_param("s", $user_input);
+$stmt->execute();
 
-echo "<h2>User List:</h2>";
-echo "<ul>";
-foreach ($users as $user) {
-    echo "<li>{$user['name']} ({$user['email']})</li>";
-}
-echo "</ul>";
+// 7. Fetch and display all rows
+//$result = $conn->query("SELECT id, name FROM users");
+
+//echo "<h3>All Users:</h3>";
+//while ($row = $result->fetch_assoc()) {
+    //echo "ID: " . $row["id"] . " - Name: " . $row["name"] . "<br>";
+//}
+
+// 8. Close connection
+$conn->close();
 ?>
