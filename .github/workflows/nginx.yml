@@ -27,7 +27,7 @@ jobs:
       - name: checkout the code.
         uses: actions/checkout@v4.2.2
       - name: install dependencies of php 
-        run: sudo apt install php-mysqli php-mysql
+        run: apt install php-mysqli php-mysql
       -  name: run php code 
          run: php index.php
       - name: test database
