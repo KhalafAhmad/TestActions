@@ -2,7 +2,7 @@
 // 1. Database connection info
 $servername = "localhost";
 $username = "root";
-$password = ""; // Set your own password
+$password = "khalaf"; // Set your own password
 $database = "test_db";
 
 // 2. Create connection
