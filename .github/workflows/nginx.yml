@@ -24,8 +24,6 @@ jobs:
           MYSQL_USER: root
           MYSQL_DATABASE: test_db
     steps:
-      - env:
-         ipaddress: mysql
       - name: checkout the code.
         uses: actions/checkout@v4.2.2
       - name: install dependencies of php 
