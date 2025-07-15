@@ -13,12 +13,24 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+   
+    services:
+      # Label used to access the service container
+      mysql:
+        # Docker Hub image
+        image: mysql:oraclelinux9
+        env:
+          MYSQL_ROOT_PASSWORD: "khalaf"
+          MYSQL_USER: root
+          MYSQL_DATABASE: test_db
     steps:
-      - uses: actions/checkout@v4.2.2
-     # - run : docker build -t php_image .
-     # - run: docker run --rm --name test php_image 
-      - run : php index.php
-      - run: echo "YESSSSSSSSSSSSSSS"
-        if: ${{ success() }}
-       
-       
+      - name: checkout the code.
+        uses: actions/checkout@v4.2.2
+      -  name: run php code 
+         run: php index.php
+      - name: test database
+        run: php test.php
+
+      - name: check resulte
+        if: ${{success()}}
+        run: echo "All test done "
