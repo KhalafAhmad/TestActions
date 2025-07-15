@@ -1,0 +1,36 @@
+name: php & mysql workflow
+on:
+  workflow_dispatch
+jobs:
+  Job1:
+    runs-on: ubuntu-latest
+    container: php:8.5.0alpha1-zts-bullseye
+    services:
+      # Label used to access the service container
+      mysql:
+        # Docker Hub image
+        image: mysql
+        env:
+          MYSQL_ROOT_PASSWORD: "khalaf"
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - name: checkout the code.
+        uses: actions/checkout@v4.2.2
+      - name: install dependencies of php 
+        run: |
+         apt-get update
+         apt-get install -y default-mysql-client
+         docker-php-ext-install mysqli
+      - name : waiting mysql
+        run : sleep 5
+      -  name: run php code 
+         run: php index.php
+      - name: test database
+        run: php test.php
+      - name: check resulte
+        if: ${{success()}}
+        run: echo "All test done "
