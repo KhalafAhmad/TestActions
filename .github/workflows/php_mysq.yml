@@ -12,6 +12,7 @@ jobs:
         image: mysql
         env:
           MYSQL_ROOT_PASSWORD: "khalaf"
+          MYSQL_DATABASE: test_db
         options: >-
           --health-cmd="mysqladmin ping --silent --password=khalaf"
           --health-interval 10s
